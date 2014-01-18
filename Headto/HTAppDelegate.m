@@ -20,11 +20,13 @@
                                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                       NSLog(@"Got response %@ with error %@.\n", response, error);
                                       NSLog(@"DATA:\n%@\nEND DATA\n", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                                      NSDictionary *res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                                      
+                                      NSLog(@"%@", [res valueForKey:@"city"]);
                                   }];
     
+    
     // TODO
-    // parse JSON from data response
-    // get the city
     // update view with current city name
     
     [task resume];
