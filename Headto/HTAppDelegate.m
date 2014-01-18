@@ -13,6 +13,26 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    NSURLSession *sess = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
+    
+    NSURL *ipinfo = [NSURL URLWithString:@"http://ipinfo.io/json"];
+    
+    NSURLSessionDataTask *task = [sess dataTaskWithURL:ipinfo
+                                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                      NSLog(@"Got response %@ with error %@.\n", response, error);
+                                      NSLog(@"DATA:\n%@\nEND DATA\n", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                                  }];
+    
+    // TODO
+    // parse JSON from data response
+    // get the city
+    // update view with current city name
+    
+    [task resume];
+    
     return YES;
 }
 							
