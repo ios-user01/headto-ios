@@ -403,6 +403,7 @@
 				GCC_PREFIX_HEADER = "Headto/Headto-Prefix.pch";
 				INFOPLIST_FILE = "Headto/Headto-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7647784B-D603-45DC-BE1F-B8653BF70043";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -416,6 +417,7 @@
 				GCC_PREFIX_HEADER = "Headto/Headto-Prefix.pch";
 				INFOPLIST_FILE = "Headto/Headto-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8FBD406F-3DA9-41D6-AB70-84B59DF75382";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -481,6 +483,7 @@
 				8B561478188A303E005B1CA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B561479188A303E005B1CA5 /* Build configuration list for PBXNativeTarget "HeadtoTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +492,7 @@
 				8B56147B188A303E005B1CA5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

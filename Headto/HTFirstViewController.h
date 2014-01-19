@@ -10,4 +10,6 @@
 
 @interface HTFirstViewController : UIViewController
 
+@property (nonatomic, retain) IBOutlet UILabel *labelResult;
+
 @end

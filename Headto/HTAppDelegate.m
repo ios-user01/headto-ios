@@ -13,27 +13,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
-    NSURL *ipinfo = [NSURL URLWithString:@"http://ipinfo.io/json"];
-    
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:ipinfo
-                                  completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                      NSLog(@"Got response %@ with error %@.\n", response, error);
-                                      NSLog(@"DATA:\n%@\nEND DATA\n", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-                                      NSDictionary *res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                                      
-                                      NSLog(@"%@", [res valueForKey:@"city"]);
-                                  }];
-    
-    
-    // TODO
-    // update view with current city name
-    
-    [task resume];
-    
+
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
