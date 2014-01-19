@@ -1,5 +1,5 @@
 //
-//  HTSecondViewController.h
+//  HTFirstViewController.h
 //  Headto
 //
 //  Created by Param Aggarwal on 18/01/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HTSecondViewController : UIViewController
+@interface SearchViewController : UIViewController
 
 @end

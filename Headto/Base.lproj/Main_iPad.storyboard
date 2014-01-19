@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--First View Controller - First-->
+        <!--Search View Controller - First-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="HTFirstViewController" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="SearchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tox-Qx-yBp"/>
                         <viewControllerLayoutGuide type="bottom" id="oDK-M7-2V9"/>
@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="3041" y="150"/>
         </scene>
-        <!--Second View Controller - Second-->
+        <!--Explore View Controller - Second-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="HTSecondViewController" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="ExploreViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b7p-Gd-B0v"/>
                         <viewControllerLayoutGuide type="bottom" id="QX6-y4-ynX"/>

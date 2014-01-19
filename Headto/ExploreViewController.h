@@ -1,5 +1,5 @@
 //
-//  HTFirstViewController.h
+//  HTSecondViewController.h
 //  Headto
 //
 //  Created by Param Aggarwal on 18/01/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HTFirstViewController : UIViewController
+@interface ExploreViewController : UIViewController
 
 @property (nonatomic, retain) IBOutlet UILabel *labelResult;
 
