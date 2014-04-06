@@ -33,8 +33,6 @@
     
     // fetch user location based on IP
     [HTNetworkRequests makeIPInfoRequest:^(NSString *city) {
-
-        NSLog(@"City: %@", city);
         
         self.currentCity = city;
         
