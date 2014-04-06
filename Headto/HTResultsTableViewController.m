@@ -11,6 +11,8 @@
 
 @interface HTResultsTableViewController ()
 
+@property NSArray *data;
+
 @end
 
 @implementation HTResultsTableViewController
@@ -28,7 +30,11 @@
 {
     [super viewDidLoad];
     
+    self.title = @"Loading...";
+
     [HTNetworkRequests foursquareSuggestCompletionForQuery:self.searchQuery inCity:self.currentCity onCompletion:^(NSArray *minivenues) {
+        
+        self.data = minivenues;
         
         NSEnumerator *enumerator = [minivenues objectEnumerator];
         
@@ -37,6 +43,10 @@
             /* code to act on each element as it is returned */
             NSLog(@"%@", [minivenue valueForKey:@"name"]);
         }
+        
+        self.title = self.searchQuery;
+
+        [self.tableView reloadData];
         
     }];
 
@@ -53,32 +63,28 @@
     // Dispose of any resources that can be recreated.
 }
 
-//#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
+#pragma mark - Table view data source
 
-/*
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return [self.data count];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"miniVenueCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.textLabel.text = [[self.data objectAtIndex:indexPath.row] valueForKey:@"name"];
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.
