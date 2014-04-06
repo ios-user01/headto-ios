@@ -8,8 +8,11 @@
 
 #import "HTIntroViewController.h"
 #import "AFNetworking.h"
+#import "AFURLRequestSerialization.h"
 
 @interface HTIntroViewController ()
+
+@property NSString *currentCity;
 
 @end
 
@@ -69,6 +72,8 @@
         
         NSString *city = [responseObject valueForKey:@"city"];
         
+        self.currentCity = city;
+
         NSDate *date = [NSDate date];
         NSLog(@"City: %@ %@", date, city);
         
@@ -89,17 +94,23 @@
 
 - (void)makeFoursquareSuggestCompletionRequest:(NSString *)query
 {
-    // possible problem with spaces in query
-    NSString *foursquareAPIEndpoint = [@"https://api.foursquare.com/v2/venues/suggestcompletion?client_id=EBA5MTZIPRVHNGKU2RB4KZ45J2BAOZFSYIXHGYBGR1KIXFIQ&client_secret=K0CBX5TQKHNEB35MGT3NNIVLWP0C4L0CQQ4UP3C2LUSLQL0W&v=20130725&limit=10&near=Bangalore&query=" stringByAppendingString:query];
     
-    NSURL *url = [NSURL URLWithString:foursquareAPIEndpoint];
+    NSString *url = @"https://api.foursquare.com/v2/venues/suggestcompletion";
+    NSDictionary *parameters = @{
+                                 @"client_id": @"EBA5MTZIPRVHNGKU2RB4KZ45J2BAOZFSYIXHGYBGR1KIXFIQ",
+                                 @"client_secret": @"K0CBX5TQKHNEB35MGT3NNIVLWP0C4L0CQQ4UP3C2LUSLQL0W",
+                                 @"v": @"20130725",
+                                 @"limit": @"10",
+                                 @"near": self.currentCity,
+                                 @"query": query
+                                 };
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:url parameters:parameters];
     
-    //AFNetworking asynchronous url request
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
+
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
 
         NSArray *minivenues = [[responseObject valueForKey:@"response"] valueForKey:@"minivenues"];
