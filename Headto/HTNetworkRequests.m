@@ -37,7 +37,7 @@
     
 }
 
-+ (void)foursquareSuggestCompletionFor:(NSString *)query forCity:(NSString *)city onCompletion:(void (^)(NSArray *minivenues))callback
++ (void)foursquareSuggestCompletionForQuery:(NSString *)query inCity:(NSString *)city onCompletion:(void (^)(NSArray *minivenues))callback
 {
     
     NSString *url = @"https://api.foursquare.com/v2/venues/suggestcompletion";

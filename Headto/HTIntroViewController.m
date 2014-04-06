@@ -60,10 +60,8 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    NSString *searchQuery = self.searchField.text;
-    
-    [HTNetworkRequests  foursquareSuggestCompletionFor:searchQuery forCity:self.currentCity onCompletion:^(NSArray *minivenues) {
+        
+    [HTNetworkRequests foursquareSuggestCompletionForQuery:self.searchField.text inCity:self.currentCity onCompletion:^(NSArray *minivenues) {
        
         NSEnumerator *enumerator = [minivenues objectEnumerator];
         
