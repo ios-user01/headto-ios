@@ -23,7 +23,7 @@
 		8B561469188A303E005B1CA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B561445188A303E005B1CA5 /* UIKit.framework */; };
 		8B561471188A303E005B1CA5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8B56146F188A303E005B1CA5 /* InfoPlist.strings */; };
 		8B561473188A303E005B1CA5 /* HeadtoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B561472188A303E005B1CA5 /* HeadtoTests.m */; };
-		8BC894BD18F1C8FD00F2788E /* HTHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC894BC18F1C8FD00F2788E /* HTHTTPRequest.m */; };
+		8BC894BD18F1C8FD00F2788E /* HTNetworkRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BC894BC18F1C8FD00F2788E /* HTNetworkRequests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +60,8 @@
 		8B56146E188A303E005B1CA5 /* HeadtoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HeadtoTests-Info.plist"; sourceTree = "<group>"; };
 		8B561470188A303E005B1CA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8B561472188A303E005B1CA5 /* HeadtoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadtoTests.m; sourceTree = "<group>"; };
-		8BC894BB18F1C8FD00F2788E /* HTHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTHTTPRequest.h; sourceTree = "<group>"; };
-		8BC894BC18F1C8FD00F2788E /* HTHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTHTTPRequest.m; sourceTree = "<group>"; };
+		8BC894BB18F1C8FD00F2788E /* HTNetworkRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTNetworkRequests.h; sourceTree = "<group>"; };
+		8BC894BC18F1C8FD00F2788E /* HTNetworkRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTNetworkRequests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,8 +131,8 @@
 				8B5607F618F109F900B60931 /* HTResultsTableViewController.m */,
 				8B5607F218F109DD00B60931 /* HTIntroViewController.h */,
 				8B5607F318F109DD00B60931 /* HTIntroViewController.m */,
-				8BC894BB18F1C8FD00F2788E /* HTHTTPRequest.h */,
-				8BC894BC18F1C8FD00F2788E /* HTHTTPRequest.m */,
+				8BC894BB18F1C8FD00F2788E /* HTNetworkRequests.h */,
+				8BC894BC18F1C8FD00F2788E /* HTNetworkRequests.m */,
 				8B56145F188A303E005B1CA5 /* Images.xcassets */,
 				8B561448188A303E005B1CA5 /* Supporting Files */,
 			);
@@ -306,7 +306,7 @@
 			files = (
 				8B561452188A303E005B1CA5 /* HTAppDelegate.m in Sources */,
 				8B5607F718F109F900B60931 /* HTResultsTableViewController.m in Sources */,
-				8BC894BD18F1C8FD00F2788E /* HTHTTPRequest.m in Sources */,
+				8BC894BD18F1C8FD00F2788E /* HTNetworkRequests.m in Sources */,
 				8B56144E188A303E005B1CA5 /* main.m in Sources */,
 				8B5607F418F109DD00B60931 /* HTIntroViewController.m in Sources */,
 			);

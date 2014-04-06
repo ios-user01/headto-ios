@@ -7,7 +7,7 @@
 //
 
 #import "HTIntroViewController.h"
-#import "HTHTTPRequest.h"
+#import "HTNetworkRequests.h"
 
 @interface HTIntroViewController ()
 
@@ -31,7 +31,7 @@
     [super viewDidLoad];
     
     // fetch user location based on IP
-    [HTHTTPRequest makeIPInfoRequest:^(NSString *city) {
+    [HTNetworkRequests makeIPInfoRequest:^(NSString *city) {
         self.currentCity = city;
         
         NSDate *date = [NSDate date];
@@ -63,7 +63,7 @@
     
     NSString *searchQuery = self.searchField.text;
     
-    [HTHTTPRequest  foursquareSuggestCompletionFor:searchQuery forCity:self.currentCity onCompletion:^(NSArray *minivenues) {
+    [HTNetworkRequests  foursquareSuggestCompletionFor:searchQuery forCity:self.currentCity onCompletion:^(NSArray *minivenues) {
        
         NSEnumerator *enumerator = [minivenues objectEnumerator];
         

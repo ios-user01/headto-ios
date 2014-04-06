@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Param Aggarwal. All rights reserved.
 //
 
-#import "HTHTTPRequest.h"
+#import "HTNetworkRequests.h"
 #import "AFNetworking.h"
 
-@implementation HTHTTPRequest
+@implementation HTNetworkRequests
 
 + (void)makeIPInfoRequest:(void (^)(NSString *city))callback
 {

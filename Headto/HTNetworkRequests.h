@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HTHTTPRequest : NSObject
+@interface HTNetworkRequests : NSObject
 
 + (void)makeIPInfoRequest:(void (^)(NSString *city))callback;
 
