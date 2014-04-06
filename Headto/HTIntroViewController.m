@@ -82,9 +82,10 @@
     
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:foursquareSuggestCompletionEndpoint completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
-        NSLog(@"Got response %@ with error %@.\n", response, error);
-        NSLog(@"DATA:\n%@\nEND DATA\n", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-                                                                 
+        // add error handling
+//        NSLog(@"Got response %@ with error %@.\n", response, error);
+//        NSLog(@"DATA:\n%@\nEND DATA\n", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+        
         NSDictionary *res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
                                                                  
         NSArray *minivenues = [[res valueForKey:@"response"] valueForKey:@"minivenues"];
