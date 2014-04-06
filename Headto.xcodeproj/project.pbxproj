@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B5607F418F109DD00B60931 /* HTIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5607F318F109DD00B60931 /* HTIntroViewController.m */; };
+		8B5607F718F109F900B60931 /* HTResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B5607F618F109F900B60931 /* HTResultsTableViewController.m */; };
 		8B561442188A303E005B1CA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B561441188A303E005B1CA5 /* Foundation.framework */; };
 		8B561444188A303E005B1CA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B561443188A303E005B1CA5 /* CoreGraphics.framework */; };
 		8B561446188A303E005B1CA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B561445188A303E005B1CA5 /* UIKit.framework */; };
@@ -14,8 +16,6 @@
 		8B56144E188A303E005B1CA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B56144D188A303E005B1CA5 /* main.m */; };
 		8B561452188A303E005B1CA5 /* HTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B561451188A303E005B1CA5 /* HTAppDelegate.m */; };
 		8B561455188A303E005B1CA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B561453188A303E005B1CA5 /* Main.storyboard */; };
-		8B56145B188A303E005B1CA5 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B56145A188A303E005B1CA5 /* SearchViewController.m */; };
-		8B56145E188A303E005B1CA5 /* ExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B56145D188A303E005B1CA5 /* ExploreViewController.m */; };
 		8B561460188A303E005B1CA5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56145F188A303E005B1CA5 /* Images.xcassets */; };
 		8B561467188A303E005B1CA5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B561466188A303E005B1CA5 /* XCTest.framework */; };
 		8B561468188A303E005B1CA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B561441188A303E005B1CA5 /* Foundation.framework */; };
@@ -35,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B5607F218F109DD00B60931 /* HTIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTIntroViewController.h; sourceTree = "<group>"; };
+		8B5607F318F109DD00B60931 /* HTIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTIntroViewController.m; sourceTree = "<group>"; };
+		8B5607F518F109F900B60931 /* HTResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTResultsTableViewController.h; sourceTree = "<group>"; };
+		8B5607F618F109F900B60931 /* HTResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTResultsTableViewController.m; sourceTree = "<group>"; };
 		8B56143E188A303E005B1CA5 /* Headto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B561441188A303E005B1CA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B561443188A303E005B1CA5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -46,10 +50,6 @@
 		8B561450188A303E005B1CA5 /* HTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTAppDelegate.h; sourceTree = "<group>"; };
 		8B561451188A303E005B1CA5 /* HTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTAppDelegate.m; sourceTree = "<group>"; };
 		8B561454188A303E005B1CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		8B561459188A303E005B1CA5 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		8B56145A188A303E005B1CA5 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
-		8B56145C188A303E005B1CA5 /* ExploreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExploreViewController.h; sourceTree = "<group>"; };
-		8B56145D188A303E005B1CA5 /* ExploreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExploreViewController.m; sourceTree = "<group>"; };
 		8B56145F188A303E005B1CA5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8B561465188A303E005B1CA5 /* HeadtoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeadtoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B561466188A303E005B1CA5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -118,10 +118,10 @@
 				8B561450188A303E005B1CA5 /* HTAppDelegate.h */,
 				8B561451188A303E005B1CA5 /* HTAppDelegate.m */,
 				8B561453188A303E005B1CA5 /* Main.storyboard */,
-				8B561459188A303E005B1CA5 /* SearchViewController.h */,
-				8B56145A188A303E005B1CA5 /* SearchViewController.m */,
-				8B56145C188A303E005B1CA5 /* ExploreViewController.h */,
-				8B56145D188A303E005B1CA5 /* ExploreViewController.m */,
+				8B5607F518F109F900B60931 /* HTResultsTableViewController.h */,
+				8B5607F618F109F900B60931 /* HTResultsTableViewController.m */,
+				8B5607F218F109DD00B60931 /* HTIntroViewController.h */,
+				8B5607F318F109DD00B60931 /* HTIntroViewController.m */,
 				8B56145F188A303E005B1CA5 /* Images.xcassets */,
 				8B561448188A303E005B1CA5 /* Supporting Files */,
 			);
@@ -258,10 +258,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B56145B188A303E005B1CA5 /* SearchViewController.m in Sources */,
 				8B561452188A303E005B1CA5 /* HTAppDelegate.m in Sources */,
-				8B56145E188A303E005B1CA5 /* ExploreViewController.m in Sources */,
+				8B5607F718F109F900B60931 /* HTResultsTableViewController.m in Sources */,
 				8B56144E188A303E005B1CA5 /* main.m in Sources */,
+				8B5607F418F109DD00B60931 /* HTIntroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
