@@ -7,6 +7,7 @@
 //
 
 #import "HTIntroViewController.h"
+#import "AFNetworking.h"
 
 @interface HTIntroViewController ()
 
@@ -27,28 +28,8 @@
 {
     [super viewDidLoad];
     
-    NSURL *ipinfo = [NSURL URLWithString:@"http://ipinfo.io/json"];
-    
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:ipinfo completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        NSLog(@"Got response %@ with error %@.\n", response, error);
-//        NSLog(@"DATA:\n%@\nEND DATA\n", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        
-        NSDictionary *res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                                      
-        NSString *city = [res valueForKey:@"city"];
-        
-        NSDate *date = [NSDate date];
-        NSLog(@"City: %@ %@", date, city);
-                                      
-        NSString *searchingIn = [@"Searching venues in " stringByAppendingString:city];
-        searchingIn = [searchingIn stringByAppendingString:@"."];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.currentLocationLabel.text = searchingIn;
-        });
-    }];
-    
-    [task resume];
+    // fetch user location based on IP
+    [self makeIPInfoRequest];
 
     // Do any additional setup after loading the view.
 }
@@ -102,4 +83,35 @@
     [task resume];
 }
 
+- (void)makeIPInfoRequest
+{
+    NSURL *url = [NSURL URLWithString:@"http://ipinfo.io/json"];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+
+    //AFNetworking asynchronous url request
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSString *city = [responseObject valueForKey:@"city"];
+        
+        NSDate *date = [NSDate date];
+        NSLog(@"City: %@ %@", date, city);
+        
+        NSString *searchingIn = [@"Searching venues in " stringByAppendingString:city];
+        searchingIn = [searchingIn stringByAppendingString:@"."];
+        
+        self.currentLocationLabel.text = searchingIn;
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Request Failed: %@, %@", error, error.userInfo);
+        
+    }];
+    
+    [operation start];
+    
+}
 @end
