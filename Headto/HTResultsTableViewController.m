@@ -7,6 +7,7 @@
 //
 
 #import "HTResultsTableViewController.h"
+#import "HTNetworkRequests.h"
 
 @interface HTResultsTableViewController ()
 
@@ -27,6 +28,18 @@
 {
     [super viewDidLoad];
     
+    [HTNetworkRequests foursquareSuggestCompletionForQuery:self.searchQuery inCity:self.currentCity onCompletion:^(NSArray *minivenues) {
+        
+        NSEnumerator *enumerator = [minivenues objectEnumerator];
+        
+        id minivenue;
+        while (minivenue = [enumerator nextObject]) {
+            /* code to act on each element as it is returned */
+            NSLog(@"%@", [minivenue valueForKey:@"name"]);
+        }
+        
+    }];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

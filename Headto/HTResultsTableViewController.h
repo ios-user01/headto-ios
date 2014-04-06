@@ -10,4 +10,7 @@
 
 @interface HTResultsTableViewController : UITableViewController
 
+@property NSString *searchQuery;
+@property NSString *currentCity;
+
 @end

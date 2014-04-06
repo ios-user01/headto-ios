@@ -7,6 +7,7 @@
 //
 
 #import "HTIntroViewController.h"
+#import "HTResultsTableViewController.h"
 #import "HTNetworkRequests.h"
 
 @interface HTIntroViewController ()
@@ -32,15 +33,12 @@
     
     // fetch user location based on IP
     [HTNetworkRequests makeIPInfoRequest:^(NSString *city) {
+
+        NSLog(@"City: %@", city);
+        
         self.currentCity = city;
         
-        NSDate *date = [NSDate date];
-        NSLog(@"City: %@ %@", date, city);
-        
-        NSString *searchingIn = [@"Searching venues in " stringByAppendingString:city];
-        searchingIn = [searchingIn stringByAppendingString:@"."];
-        
-        self.currentLocationLabel.text = searchingIn;
+        self.currentLocationLabel.text = [@"Searching venues in " stringByAppendingString:city];
 
     }];
 
@@ -60,18 +58,12 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-        
-    [HTNetworkRequests foursquareSuggestCompletionForQuery:self.searchField.text inCity:self.currentCity onCompletion:^(NSArray *minivenues) {
-       
-        NSEnumerator *enumerator = [minivenues objectEnumerator];
-        
-        id minivenue;
-        while (minivenue = [enumerator nextObject]) {
-            /* code to act on each element as it is returned */
-            NSLog(@"%@", [minivenue valueForKey:@"name"]);
-        }
+    
+    HTResultsTableViewController *destination = [segue destinationViewController];
+    
+    destination.searchQuery = self.searchField.text;
+    destination.currentCity = self.currentCity;
 
-    }];
 }
 
 @end
