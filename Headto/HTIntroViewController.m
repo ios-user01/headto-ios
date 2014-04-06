@@ -47,41 +47,13 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-
-    // get value from box
-    // append to foursquare url
-    // parse response
-    // put venue names inside label
     
     NSString *searchQuery = self.searchField.text;
     
-    NSString *foursquareSuggestCompletionURL = @"https://api.foursquare.com/v2/venues/suggestcompletion?client_id=EBA5MTZIPRVHNGKU2RB4KZ45J2BAOZFSYIXHGYBGR1KIXFIQ&client_secret=K0CBX5TQKHNEB35MGT3NNIVLWP0C4L0CQQ4UP3C2LUSLQL0W&v=20130725&limit=10&near=Bangalore&query="; //append with query;
-    
-    NSString *queryURL = [foursquareSuggestCompletionURL stringByAppendingString:searchQuery]; //possible problem with spaces in query
-    
-    NSURL *foursquareSuggestCompletionEndpoint = [NSURL URLWithString:queryURL];
-    
-    NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:foursquareSuggestCompletionEndpoint completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        // add error handling
-//        NSLog(@"Got response %@ with error %@.\n", response, error);
-//        NSLog(@"DATA:\n%@\nEND DATA\n", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-        
-        NSDictionary *res = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                                                                 
-        NSArray *minivenues = [[res valueForKey:@"response"] valueForKey:@"minivenues"];
-                                                                 
-        NSEnumerator *enumerator = [minivenues objectEnumerator];
-
-        id minivenue;
-        while (minivenue = [enumerator nextObject]) {
-            /* code to act on each element as it is returned */
-            NSLog(@"%@", [minivenue valueForKey:@"name"]);
-        }
-    }];
-    
-    [task resume];
+    [self makeFoursquareSuggestCompletionRequest:searchQuery];
 }
+
+#pragma mark - URL Fetches
 
 - (void)makeIPInfoRequest
 {
@@ -114,4 +86,40 @@
     [operation start];
     
 }
+
+- (void)makeFoursquareSuggestCompletionRequest:(NSString *)query
+{
+    // possible problem with spaces in query
+    NSString *foursquareAPIEndpoint = [@"https://api.foursquare.com/v2/venues/suggestcompletion?client_id=EBA5MTZIPRVHNGKU2RB4KZ45J2BAOZFSYIXHGYBGR1KIXFIQ&client_secret=K0CBX5TQKHNEB35MGT3NNIVLWP0C4L0CQQ4UP3C2LUSLQL0W&v=20130725&limit=10&near=Bangalore&query=" stringByAppendingString:query];
+    
+    NSURL *url = [NSURL URLWithString:foursquareAPIEndpoint];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    //AFNetworking asynchronous url request
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+        NSArray *minivenues = [[responseObject valueForKey:@"response"] valueForKey:@"minivenues"];
+        
+        NSEnumerator *enumerator = [minivenues objectEnumerator];
+        
+        id minivenue;
+        while (minivenue = [enumerator nextObject]) {
+            /* code to act on each element as it is returned */
+            NSLog(@"%@", [minivenue valueForKey:@"name"]);
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Request Failed: %@, %@", error, error.userInfo);
+        
+    }];
+    
+    [operation start];
+    
+}
+
 @end
