@@ -62,7 +62,12 @@
     HTResultsTableViewController *destination = [segue destinationViewController];
     
     destination.searchQuery = self.searchField.text;
-    destination.currentCity = self.currentCity;
+    
+    if (self.currentCity) {
+        destination.currentCity = self.currentCity;
+    } else {
+        destination.currentCity = @"India";
+    }
 
 }
 

@@ -8,6 +8,7 @@
 
 #import "HTResultsTableViewController.h"
 #import "HTNetworkRequests.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface HTResultsTableViewController ()
 
@@ -35,15 +36,7 @@
     [HTNetworkRequests foursquareSuggestCompletionForQuery:self.searchQuery inCity:self.currentCity onCompletion:^(NSArray *minivenues) {
         
         self.data = minivenues;
-        
-        NSEnumerator *enumerator = [minivenues objectEnumerator];
-        
-        id minivenue;
-        while (minivenue = [enumerator nextObject]) {
-            /* code to act on each element as it is returned */
-            NSLog(@"%@", [minivenue valueForKey:@"name"]);
-        }
-        
+                
         self.title = self.searchQuery;
 
         [self.tableView reloadData];
@@ -81,8 +74,31 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"miniVenueCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [[self.data objectAtIndex:indexPath.row] valueForKey:@"name"];
-
+    NSDictionary *minivenue = [self.data objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [minivenue valueForKey:@"name"];
+    
+    NSDictionary *location = [minivenue valueForKey:@"location"];
+    
+    cell.detailTextLabel.text = [location valueForKey:@"address"];
+    
+    NSArray *categories = [minivenue valueForKey:@"categories"];
+    
+    if ([categories count] > 0) {
+        NSDictionary *category = [categories objectAtIndex:0];
+        
+//        NSString *categoryName = [category valueForKey:@"name"];
+        
+        NSDictionary *icon = [category valueForKey:@"icon"];
+        
+        NSString *prefix = [icon valueForKey:@"prefix"];
+        NSString *suffix = [icon valueForKey:@"suffix"];
+        
+        NSString *imageURL = [[prefix stringByAppendingString:@"bg_88"] stringByAppendingString:suffix];
+        
+        [cell.imageView setImageWithURL:[NSURL URLWithString:imageURL]];
+    }
+    
     return cell;
 }
 
