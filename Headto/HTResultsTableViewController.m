@@ -82,7 +82,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"miniVenueCell" forIndexPath:indexPath];
     
     cell.textLabel.text = [[self.data objectAtIndex:indexPath.row] valueForKey:@"name"];
-    
+
     return cell;
 }
 
