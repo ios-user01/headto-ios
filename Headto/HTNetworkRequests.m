@@ -37,6 +37,40 @@
     
 }
 
++ (void)foursquareVenuesForQuery:(NSString *)query inCity:(NSString *)city onCompletion:(void (^)(NSArray *minivenues))callback
+{
+    
+    NSString *url = @"https://api.foursquare.com/v2/venues/search";
+    NSDictionary *parameters = @{
+                                 @"client_id": @"EBA5MTZIPRVHNGKU2RB4KZ45J2BAOZFSYIXHGYBGR1KIXFIQ",
+                                 @"client_secret": @"K0CBX5TQKHNEB35MGT3NNIVLWP0C4L0CQQ4UP3C2LUSLQL0W",
+                                 @"v": @"20130725",
+                                 @"near": city,
+                                 @"query": query
+                                 };
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"GET" URLString:url parameters:parameters error:nil];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSArray *venues = [[responseObject valueForKey:@"response"] valueForKey:@"venues"];
+        
+        callback(venues);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"Request Failed: %@, %@", error, error.userInfo);
+        
+    }];
+    
+    [operation start];
+    
+}
+
 + (void)foursquareSuggestCompletionForQuery:(NSString *)query inCity:(NSString *)city onCompletion:(void (^)(NSArray *minivenues))callback
 {
     
@@ -61,7 +95,7 @@
         NSArray *minivenues = [[responseObject valueForKey:@"response"] valueForKey:@"minivenues"];
         
         callback(minivenues);
-                
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"Request Failed: %@, %@", error, error.userInfo);

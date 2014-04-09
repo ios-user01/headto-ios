@@ -12,6 +12,8 @@
 
 + (void)makeIPInfoRequest:(void (^)(NSString *city))callback;
 
++ (void)foursquareVenuesForQuery:(NSString *)query inCity:(NSString *)city onCompletion:(void (^)(NSArray *venues))callback;
+
 + (void)foursquareSuggestCompletionForQuery:(NSString *)query inCity:(NSString *)city onCompletion:(void (^)(NSArray *minivenues))callback;
 
 @end

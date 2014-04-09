@@ -33,9 +33,9 @@
     
     self.title = @"Loading...";
 
-    [HTNetworkRequests foursquareSuggestCompletionForQuery:self.searchQuery inCity:self.currentCity onCompletion:^(NSArray *minivenues) {
+    [HTNetworkRequests foursquareVenuesForQuery:self.searchQuery inCity:self.currentCity onCompletion:^(NSArray *venues) {
         
-        self.data = minivenues;
+        self.data = venues;
                 
         self.title = self.searchQuery;
 
